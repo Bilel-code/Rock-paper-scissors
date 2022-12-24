@@ -45,6 +45,8 @@ function game(){
     let computerWin =0;
 
     for(let i=1;i<=5;i++){
+        let playerSelection=prompt('choose between rock ,paper,scissors');
+        let computerSelection = getComputerChoice();
         playRound(playerSelection,computerSelection);
         if(test ==1){
             playerWin++;
@@ -64,7 +66,5 @@ function game(){
     }
 }
 
-let playerSelection=prompt('choose between rock ,paper,scissors');
-let computerSelection = getComputerChoice();
 
 console.log(game());
