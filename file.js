@@ -1,6 +1,6 @@
 
 
-/*function getComputerChoice(){
+function getComputerChoice(){
     let x= Math.floor(Math.random() * 3);
     console.log(x);
     if (x == 0){
@@ -13,7 +13,6 @@
     }
 }
 
-/*
 function playRound(playerSelection,computerSelection){
     
       let playerselect = playerSelection.toUpperCase();
@@ -39,7 +38,7 @@ function playRound(playerSelection,computerSelection){
         
       }
 }
-*//*
+/*
 function game(){
     let playerWin =0;
     let computerWin =0;
@@ -77,18 +76,48 @@ if (!rockButton) {
   console.error('Button with ID "rock" not found');
 } else {
   rockButton.addEventListener('click', function() {
-    playRound('rock');
+    const botChoice = getComputerChoice();
+    console.log(botChoice);
+    let whoWins = playRound('rock',botChoice);
+    if(whoWins ==1){
+      console.log('player won');
+
+    }else if(whoWins == 0){
+      console.log('bot won');
+    }else{
+      console.log('tie');
+    }
   });
 }
 
 paperButton.addEventListener('click', function() {
-  playRound('paper');
+  const botChoice = getComputerChoice();
+  console.log(botChoice);
+  let whoWins = playRound('paper',botChoice);
+    if(whoWins ==1){
+      console.log('player won');
+
+    }else if(whoWins== 0){
+      console.log('bot won');
+    }else{
+      console.log('tie');
+    }
 });
 
 scissorsButton.addEventListener('click', function() {
-  playRound('scissors');
-});
+  const botChoice = getComputerChoice();
+  console.log(botChoice);
+  let whoWins = playRound('scissors',botChoice);
+    if(whoWins ==1){
+      console.log('player won');
 
+    }else if(whoWins == 0){
+      console.log('bot won');
+    }else{
+      console.log('tie');
+    }
+});
+/*
 function playRound(playerSelection) {
   console.log(`Player selection: "${playerSelection}"`);
-}
+}*/
