@@ -1,0 +1,25 @@
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn-one {
+    background-color: #336699;
+    color: #fff;
+    border: 1px solid #336699;
+  }
+  
+  .btn-two {
+    background-color: #dd3333;
+    color: #fff;
+    border: 1px solid #dd3333;
+  }
+  
+  .btn-three {
+    background-color: #33dd33;
+    color: #fff;
+    border: 1px solid #33dd33;
+  }

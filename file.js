@@ -1,6 +1,6 @@
 
 
-function getComputerChoice(){
+/*function getComputerChoice(){
     let x= Math.floor(Math.random() * 3);
     console.log(x);
     if (x == 0){
@@ -13,7 +13,7 @@ function getComputerChoice(){
     }
 }
 
-
+/*
 function playRound(playerSelection,computerSelection){
     
       let playerselect = playerSelection.toUpperCase();
@@ -39,7 +39,7 @@ function playRound(playerSelection,computerSelection){
         
       }
 }
-
+*//*
 function game(){
     let playerWin =0;
     let computerWin =0;
@@ -67,6 +67,28 @@ function game(){
         return 'its a tie'
     }
 }
+*/
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
 
 
-game();
+if (!rockButton) {
+  console.error('Button with ID "rock" not found');
+} else {
+  rockButton.addEventListener('click', function() {
+    playRound('rock');
+  });
+}
+
+paperButton.addEventListener('click', function() {
+  playRound('paper');
+});
+
+scissorsButton.addEventListener('click', function() {
+  playRound('scissors');
+});
+
+function playRound(playerSelection) {
+  console.log(`Player selection: "${playerSelection}"`);
+}
