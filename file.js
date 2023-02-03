@@ -1,124 +1,133 @@
 
 
 function getComputerChoice(){
-    let x= Math.floor(Math.random() * 3);
-    console.log(x);
-    if (x == 0){
-        return 'rock';
-        
-    }else if(x == 1){
-        return 'paper';
-    }else {
-        return 'scissors';
-    }
+  let x= Math.floor(Math.random() * 3);
+  console.log(x);
+  if (x == 0){
+    return 'rock';
+  }else if(x == 1){
+    return 'paper';
+  }else {
+    return 'scissors';
+  }
 }
 
 function playRound(playerSelection,computerSelection){
-    
-      let playerselect = playerSelection.toUpperCase();
-      if((playerselect =='ROCK' && computerSelection =='rock') || (playerselect =='SCISSORS' && computerSelection =='scissors') ||(playerselect =='PAPER' && computerSelection =='paper')) {
-                    return 2
-      }else if(playerselect =='ROCK' && computerSelection =='scissors') {
-        return 1;
-        
-      }  else if(playerselect =='ROCK' && computerSelection =='paper') {
-        return 0;
-        
-      }else if(playerselect =='PAPER' && computerSelection =='rock') {
-        return 1;
-       
-      }else if(playerselect =='PAPER' && computerSelection =='scissors') {
-        return 0;
-        
-      }else if(playerselect =='SCISSORS' && computerSelection =='paper') {
-        return 1;
-        
-      }else if(playerselect =='SCISSORS' && computerSelection =='rock') {
-        return 0;
-        
-      }
+  let playerselect = playerSelection.toUpperCase();
+  if((playerselect =='ROCK' && computerSelection =='rock') || 
+    (playerselect =='SCISSORS' && computerSelection =='scissors') ||
+    (playerselect =='PAPER' && computerSelection =='paper')) {
+    return 2
+  }else if(playerselect =='ROCK' && computerSelection =='scissors') {
+    return 1;
+  }  else if(playerselect =='ROCK' && computerSelection =='paper') {
+    return 0;
+  }else if(playerselect =='PAPER' && computerSelection =='rock') {
+    return 1;
+  }else if(playerselect =='PAPER' && computerSelection =='scissors') {
+    return 0;
+  }else if(playerselect =='SCISSORS' && computerSelection =='paper') {
+    return 1;
+  }else if(playerselect =='SCISSORS' && computerSelection =='rock') {
+    return 0;
+  }
 }
-/*
-function game(){
-    let playerWin =0;
-    let computerWin =0;
 
-    for(let i=1;i<=5;i++){
-        let playerSelection=prompt('choose between rock ,paper,scissors');
-        let computerSelection = getComputerChoice();
-        let test =playRound(playerSelection,computerSelection); 
-        if(test ==1){
-            playerWin++;
-            console.log('the player win this round');
-        }else if(test == 0){
-            computerWin++;
-            console.log('the computer win this round');
-        }else if(test ==2){
-            console.log('its a tie');
-        }
-    }
-    if(playerWin<computerWin){
-        return 'computer Win the game'
-    }else if(playerWin>computerWin){
-        return 'player Win the game'
-
-    }else {
-        return 'its a tie'
-    }
-}
-*/
 const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
 const scissorsButton = document.getElementById('scissors');
 
-const result = document.getElementById('result');
+const resultDisplay = document.getElementById('result');
+const scoreDisplay = document.getElementById('score');
 
-if (!result) {
-  console.error('Element with ID "result" not found');
-}
+let playerWin = 0;
+let botWin = 0;
 
-
-
-if (!rockButton) {
-  console.error('Button with ID "rock" not found');
+if (!resultDisplay) {
+  console.error('Result display with ID "result" not found');
 } else {
   rockButton.addEventListener('click', function() {
     const botChoice = getComputerChoice();
+    console.log(botChoice);
     let whoWins = playRound('rock',botChoice);
-    if(whoWins == 1) {
-      result.innerHTML = 'Player Won!';
-    } else if(whoWins == 0) {
-      result.innerHTML = 'Bot Won!';
-    } else {
-      result.innerHTML = 'Tie!';
+    if(whoWins ==1){
+      playerWin++;
+      resultDisplay.textContent = "You won!";
+    }else if(whoWins == 0){
+      botWin++;
+      resultDisplay.textContent = "Bot won!";
+    }else{
+      resultDisplay.textContent = "It's a tie!";
+    }
+    scoreDisplay.textContent = `Player: ${playerWin} Bot: ${botWin}`;
+    if (playerWin == 5) {
+      resultDisplay.textContent = "You won the game!";
+      rockButton.style.display = "none";
+      paperButton.style.display = "none";
+      scissorsButton.style.display = "none";
+    } else if (botWin == 5) {
+      resultDisplay.textContent = "Bot won the game!";
+      rockButton.style.display = "none";
+      paperButton.style.display = "none";
+      scissorsButton.style.display = "none";
     }
   });
-}
+  }
 
 paperButton.addEventListener('click', function() {
   const botChoice = getComputerChoice();
+  console.log(botChoice);
   let whoWins = playRound('paper',botChoice);
-  if(whoWins == 1) {
-    result.innerHTML = 'Player Won!';
-  } else if(whoWins == 0) {
-    result.innerHTML = 'Bot Won!';
-  } else {
-    result.innerHTML = 'Tie!';
-  }
+    if(whoWins ==1){
+      resultDisplay.textContent = "You won!";
+      playerWin++;
+    }else if(whoWins== 0){
+      botWin++;
+      resultDisplay.textContent = "Bot won!";
+    }else{
+      playerWin++;botWin++;
+      resultDisplay.textContent = "It's a tie!";
+    }
+    scoreDisplay.textContent = `Player: ${playerWin} Bot: ${botWin}`;
+    if (playerWin == 5) {
+      resultDisplay.textContent = "You won the game!";
+      rockButton.style.display = "none";
+      paperButton.style.display = "none";
+      scissorsButton.style.display = "none";
+    } else if (botWin == 5) {
+      resultDisplay.textContent = "Bot won the game!";
+      rockButton.style.display = "none";
+      paperButton.style.display = "none";
+      scissorsButton.style.display = "none";
+    }
 });
 
 scissorsButton.addEventListener('click', function() {
   const botChoice = getComputerChoice();
+  console.log(botChoice);
   let whoWins = playRound('scissors',botChoice);
-  if(whoWins == 1) {
-    result.innerHTML = 'Player Won!';
-  } else if(whoWins == 0) {
-    result.innerHTML = 'Bot Won!';
-  } else {
-    result.innerHTML = 'Tie!';
-  }
+    if(whoWins ==1){
+      playerWin++;
+      resultDisplay.textContent = "You won!";
+
+    }else if(whoWins == 0){
+      botWin++;
+      resultDisplay.textContent = "Bot won!";
+    }else{
+      playerWin++;botWin++;
+      resultDisplay.textContent = "It's a tie!";
+    }
+    scoreDisplay.textContent = `Player: ${playerWin} Bot: ${botWin}`;
+    if (playerWin == 5) {
+      resultDisplay.textContent = "You won the game!";
+      rockButton.style.display = "none";
+      paperButton.style.display = "none";
+      scissorsButton.style.display = "none";
+    } else if (botWin == 5) {
+      resultDisplay.textContent = "Bot won the game!";
+      rockButton.style.display = "none";
+      paperButton.style.display = "none";
+      scissorsButton.style.display = "none";
+    }
 });
-/*
-function playRound(playerSelection) {
-  console.log(`Player selection: "${playerSelection}"`);
-}*/
+
