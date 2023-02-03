@@ -71,51 +71,52 @@ const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
 const scissorsButton = document.getElementById('scissors');
 
+const result = document.getElementById('result');
+
+if (!result) {
+  console.error('Element with ID "result" not found');
+}
+
+
 
 if (!rockButton) {
   console.error('Button with ID "rock" not found');
 } else {
   rockButton.addEventListener('click', function() {
     const botChoice = getComputerChoice();
-    console.log(botChoice);
     let whoWins = playRound('rock',botChoice);
-    if(whoWins ==1){
-      console.log('player won');
-
-    }else if(whoWins == 0){
-      console.log('bot won');
-    }else{
-      console.log('tie');
+    if(whoWins == 1) {
+      result.innerHTML = 'Player Won!';
+    } else if(whoWins == 0) {
+      result.innerHTML = 'Bot Won!';
+    } else {
+      result.innerHTML = 'Tie!';
     }
   });
 }
 
 paperButton.addEventListener('click', function() {
   const botChoice = getComputerChoice();
-  console.log(botChoice);
   let whoWins = playRound('paper',botChoice);
-    if(whoWins ==1){
-      console.log('player won');
-
-    }else if(whoWins== 0){
-      console.log('bot won');
-    }else{
-      console.log('tie');
-    }
+  if(whoWins == 1) {
+    result.innerHTML = 'Player Won!';
+  } else if(whoWins == 0) {
+    result.innerHTML = 'Bot Won!';
+  } else {
+    result.innerHTML = 'Tie!';
+  }
 });
 
 scissorsButton.addEventListener('click', function() {
   const botChoice = getComputerChoice();
-  console.log(botChoice);
   let whoWins = playRound('scissors',botChoice);
-    if(whoWins ==1){
-      console.log('player won');
-
-    }else if(whoWins == 0){
-      console.log('bot won');
-    }else{
-      console.log('tie');
-    }
+  if(whoWins == 1) {
+    result.innerHTML = 'Player Won!';
+  } else if(whoWins == 0) {
+    result.innerHTML = 'Bot Won!';
+  } else {
+    result.innerHTML = 'Tie!';
+  }
 });
 /*
 function playRound(playerSelection) {
